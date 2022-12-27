@@ -1,0 +1,83 @@
+{% extends 'front/base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="hero hero-single route bg-image" style="background-image: url(assets/img/overlay-bg.jpg)">
+    <div class="overlay-mf"></div>
+    <div class="hero-content display-table">
+      <div class="table-cell">
+        <div class="container">
+          <h2 class="hero-title mb-4">News Details</h2>
+          <ol class="breadcrumb d-flex justify-content-center">
+            <li class="breadcrumb-item">
+              <a href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="{% url 'index' %}#blog">Library</a>
+            </li>
+            <li class="breadcrumb-item active">Data</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ======= Blog Single Section ======= -->
+    <section class="blog-wrapper sect-pt4" id="blog">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="post-box">
+              <div class="post-thumb">
+                <img src="{{ berita.thumb }}" width="685" height="455" class="img-fluid" alt="">
+              </div>
+              <div class="post-meta">
+                <h1 class="article-title">{{ berita.title }}</h1>
+                <ul>
+                  <li>
+                    <span class="bi bi-person"></span>
+                    <a href="#">>{{ berita.author }}</a>
+                  </li>
+                  <li>
+                    <span class="bi bi-tag"></span>
+                    <a href="#">{{ berita.tag }}</a>
+                  </li>
+                  <li>
+                    <span class="bi bi-clock"></span>
+                    <a href="#">{{ berita.time }}</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="article-content">
+                <p>
+                  {{ berita.desc|safe }}
+                </p>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="widget-sidebar portfolio-infos">
+            <h5 class="sidebar-title">Article Infomation</h5>
+            <div class="sidebar-portfolio-info" >
+              
+              <ul>
+                <li><strong>Kategori : </strong> {{ berita.tag }}</li>
+                <li><strong>Judul : </strong> {{ berita.title }}</li>
+                <li><strong>Tanggal : </strong> {{ berita.time }}</li>
+                <li><strong>Di posting oleh : </strong> {{ berita.author }}</li>
+              </ul>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Blog Single Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+
+
+{% endblock content %}

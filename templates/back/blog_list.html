@@ -1,0 +1,58 @@
+{% extends 'back/base.html' %}
+{% load static %}
+
+{% block content %}
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+              <div class="page-header">
+              <div class="col-lg-15 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Tabel Artikel</h4>
+                    <a class="btn btn-outline-warning" href="{% url 'blog_add' %}"><i class="mdi mdi-bookmark-plus-outline">Tambah Artikel</i></a>
+                    <a class="btn btn-outline-danger" href="{% url 'logout' %}"><i class="mdi mdi-logout">Logout</i></a>
+                    </p>
+                    <div class="table-responsive">
+                      <table class="table table-dark">
+                        <thead>
+                          <tr>
+                            <th> # </th>
+                            <th> Nama </th>
+                            <th> Judul </th>
+                            <th> Kategori </th>
+                            <th> Date </th>
+                            <th> Action </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for p in artikel  %}
+                          <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ p.nama }}</td>
+                            <td>{{ p.judul }}</td>
+                            <td>{{ p.kategori }}</td>
+                            <td>{{ p.date }}</td>
+                            <td><a class="btn btn-warning" href="{% url 'blog_update' p.id %}"><i class="mdi mdi-lead-pencil"></i></a>
+                              <a class="btn btn-primary" href="{% url 'blog_view' p.id %}"><i class="mdi mdi-file-document-box"></i></a>
+                                <a onclick="return confirm('Apakah anda yakin ingin menghapus data ?')" class="btn btn-danger" href="{% url 'blog_delete' p.id %}"><i class="mdi mdi-delete"></i></a></td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+        </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    {% endblock content %}

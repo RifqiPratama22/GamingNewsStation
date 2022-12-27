@@ -1,0 +1,69 @@
+{% extends 'back/base.html' %}
+{% load static %}
+
+{% block content %}
+        <!-- partial -->
+        <div class="main-panel">
+            <form method="POST">
+                {% csrf_token %}
+            <div class="content-wrapper">
+              <div class="page-header">
+                <h3 class="page-title"> DETAIL ARTIKEL API </h3>
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Artikel</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">DETAIL ARTIKEL API</li>
+                  </ol>
+                </nav>
+              </div>
+              <div class="row">
+                <div class="col-md-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                <h4 class="card-title">DETAIL ARTIKEL API</h4>
+                <form class="card-content">
+                  <div class="form-group">
+                    <label class="nama">Nama : {{ berita.author }}</label>
+                  </div>
+                  <div class="form-group">
+                    <label for="nama">Judul : {{ berita.title }}</label>
+                  </div>
+                  <div class="form-group">
+                    <label for="kategori">Tag : {{ berita.tag }}</label>
+                  </div>
+				          <div class="form-group">
+                    <label for="kategori">Time : {{ berita.time }}</label>
+                  </div>
+				          <div class="form-group">
+                    <label for="kategori">Key : {{ berita.key }}</label>
+                  </div>
+                  <div class="form-group">
+                    <label for="textarea">Deskripsi : {{ berita.desc|safe }}</label>
+                  </div>
+                  <div class="form-group">
+                    <label for="textarea">Thumbnail : {{ berita.thumb }}</label>
+                  </div>
+                  <div class="card-footer text-right">
+                  <a class="btn btn-outline-warning" href="{% url 'blog_list' %}"><i class="mdi mdi-arrow-left-bold-hexagon-outline"> Back</i></a></div>
+                </form>
+            </form>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    {% endblock content %}
+	

@@ -1,0 +1,193 @@
+{% extends 'front/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+  <!-- ======= Hero Section ======= -->
+  <div id="hero" class="hero route bg-image" style="background-image: url(static/front/img/cover.jpg)">
+    <div class="overlay-itro"></div>
+    <div class="hero-content display-table">
+      <div class="table-cell">
+        <div class="container">
+          <!--<p class="display-6 color-d">Hello, world!</p>-->
+          <h1 class="hero-title mb-4">Gaming News Station</h1>
+          <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
+        </div>
+      </div>
+    </div>
+  </div><!-- End Hero Section -->
+
+  <main id="main">
+
+    <!-- ======= Services Section ======= -->
+    <section id="kategori"><br><br><br>
+    <div class="article">
+      <div class="row container">
+        <div class="col-md-8">
+          {% for p in artikel %}
+          <div class="card card-blog card-plain-text-center" style="padding: 10px;">
+            <div class="card-image">
+              <a href="{% url 'detail_artikel' p.id %}"><img src="{{p.ImgUrl}}" alt="" class="img-fluid"></a>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-category">
+              <span class="badge badge-primary main-tag"></span>
+            </div>
+           
+              <h3 class="card-title"><a href="{% url 'detail_artikel' p.id %}">{{p.judul}}</h3>
+            
+            <div class="card-description">
+              <p>{{p.body|safe|truncatechars:200}}</p>
+            </div>
+            <div class="card-description">
+              <span class="badge bg-warning">🕒{{p.date}}</span><span class="badge bg-primary">💠{{p.kategori}}</span>
+            </div>
+          </div><br>
+          <a class="btn btn-outline-warning bg-dark" href="{% url 'detail_artikel' p.id %}">Baca Selengkapnya</a>
+          <hr>
+          {% endfor %}
+        </div>
+        {% comment %} --------- {% endcomment %}
+        <div class="col-md-4">
+          <div class="widget-sidebar widget-tags">
+            <h5 class="sidebar-title">Kategori</h5>
+            <div class="sidebar-content" >
+              {% for k in kategori %}
+              <ul>
+                <li>
+                  <a href="{% url 'artikel_filter' k.nama %}" style="color: yellow;">{{k.nama}}</a>
+                </li>
+              </ul>
+              {% endfor %}
+            </div>
+          </div>
+        
+        
+        <div class="widget-sidebar">
+          <h5 class="sidebar-title">List Post Kategori</h5>
+          <div class="sidebar-content">
+            {% for p in artikel  %}
+            <ul class="list-sidebar">
+              <li>
+                <a href="{% url 'detail_artikel' p.id %}">{{ p.judul }}.</a>
+              </li>
+            </ul>
+            {% endfor %}
+          </div>
+        </div>
+    </div>
+  </section>
+
+    <!-- ======= Blog Section ======= -->
+    <hr>
+    <section id="blog" class="blog-mf sect-pt4 route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="title-box text-center">
+              <h3 class="title-a">
+                Blog
+              </h3>
+              {% comment %} <p class="subtitle-a">
+                Semua Artikel.
+              </p> {% endcomment %}
+              <div class="line-mf"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          {% for b in berita  %}
+          <div class="col-md-4">
+            <div class="card card-blog">
+              <div class="card-img">
+                <a href="{% url 'detail_berita' b.title %}"><img src="{{ b.thumb }}" width="510" height="180" alt="" class="img-fluid"></a>
+              </div>
+              <div class="card-body">
+                <div class="card-category-box">
+                  <div class="card-category">
+                    <h6 class="category">{{ b.tag }}</h6>
+                  </div>
+                </div>
+                <h3 class="card-title"><a href="{% url 'detail_berita' b.title %}">{{ b.title }}</a></h3>
+                <p class="card-description">
+                  {{ b.desc|safe }}
+                </p>
+              </div>
+              <div class="card-footer">
+                <div class="post-author">
+                  <a href="#">
+                    <img src="{% static 'front/img/testimonial-2.jpg' %}" alt="" class="avatar rounded-circle">
+                    <span class="author">{{ b.author }}</span>
+                  </a>
+                </div>
+                <div class="post-date">
+                  <span class="bi bi-clock"></span>{{ b.time }}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section><!-- End Blog Section -->
+    
+    {% if artikel.has_other_pages %}
+        <ul class="pagination container">
+          {% if artikel.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ artikel.previous_page_number }}">&laquo;</a></li>
+          {% else %}
+            <li class="page-link"><span>&laquo;</span></li>
+          {% endif %}
+          {% for i in artikel.paginator.page_range %}
+            {% if artikel.number == i %}
+              <li class="page-link"><span>{{ i }} <span class="sr-only"></span></span></li>
+            {% else %}
+              <li class="page-link"><a href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+          {% endfor %}
+          {% if artikel.has_next %}
+            <li class="page-link"><a href="?page={{ artikel.next_page_number }}">&raquo;</a></li>
+          {% else %}
+            <li class="page-link"><span>&raquo;</span></li>
+          {% endif %}
+        </ul>
+      {% endif %}
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(static/front/img/cover.jpg)">
+      <div class="overlay-mf"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="contact-mf">
+              <div id="contact" class="box-shadow-full">
+                
+                  <div class="col-md-12">
+                    <div class="title-box-2 pt-4 pt-md-0">
+                      <h5 class="title-left">
+                        Contact
+                      </h5>
+                    </div>
+                    <div class="more-info">
+                      <p class="lead">
+                        Jika ada sesuatu yang ingin ditanyakan atau meminta bantuan silahkan hubungi Gaming News Station yang ada dibawah ini.
+                      </p>
+                      <ul class="list-ico">
+                        <li><span class="bi bi-geo-alt"></span> Jl. Harun nafsi</li>
+                        <li><span class="bi bi-phone"></span> 0853-4690-5358</li>
+                        <li><span class="bi bi-envelope"></span> rifqi094@gmail.com</li>
+                      </ul>
+                    </div>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Contact Section -->
+    {% endblock content %}

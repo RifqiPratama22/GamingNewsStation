@@ -1,0 +1,91 @@
+{% extends 'back/base.html' %}
+{% load static %}
+
+{% block content %}
+
+        <!-- partial -->
+        <div class="main-panel">
+            <form method="POST">
+                {% csrf_token %}
+            <div class="content-wrapper">
+              <div class="page-header">
+                <h3 class="page-title"> {{user_info.username}} </h3>
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">FORM USERS</li>
+                  </ol>
+                </nav>
+              </div>
+              <div class="row">
+                <div class="col-md-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                <h4 class="card-title">Form Edit USER</h4>
+                <p class="card-description"> Edit User </p>
+                <form class="forms-sample">
+                  {% comment %} <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" class="form-control" name="nama" placeholder="Name" value="{{ get_artikel.nama }}">
+                  </div> {% endcomment %}
+                  <div class="form-group">
+                    <label for="first_name">First Name</label>
+                    {% comment %} <input type="text" class="form-control" name="judul" placeholder="Name" value="{{ get_artikel.judul }}"> {% endcomment %}
+                    {{forms_user.first_name}}
+                  </div>
+                  <div class="form-group">
+                    <label for="last_name">Last Name</label>
+                    {% comment %} <select class="form-control" id="kategori" name="kategori">
+                        {% for kategori in kategori %}
+                            {% if get_artikel.kategori == kategori %}
+                            <option value="{{ kategori.nama }}" selected="selected">{{ kategori.nama }}</option>
+                            {% else %}
+                            <option value="{{ kategori.nama }}">{{ kategori.nama }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select> {% endcomment %}
+                    {{forms_user.last_name}}
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    {% comment %} <input type="text" class="form-control" name="judul" placeholder="Name" value="{{ get_artikel.judul }}"> {% endcomment %}
+                    {{forms_user.email}}
+                    <div class="form-group">
+                        <label for="telp">Telp</label>
+                        {% comment %} <input type="text" class="form-control" name="judul" placeholder="Name" value="{{ get_artikel.judul }}"> {% endcomment %}
+                        {{forms_biodata.telp}}
+                        <div class="form-group">
+                            <label for="alamat">Alamat</label>
+                            {% comment %} <input type="text" class="form-control" name="judul" placeholder="Name" value="{{ get_artikel.judul }}"> {% endcomment %}
+                            {{forms_biodata.alamat}}
+                            <br>
+                  <button type="submit" class="btn btn-outline-warning mr-2">Submit</button>
+                  <a class="btn btn-outline-warning" href="{% url 'list_users' %}"><i class="mdi mdi-arrow-left-bold-hexagon-outline"> Back</i></a></div>
+                </form>
+            </form>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    {% endblock content %}
+
+    {% block js %}
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+
+    {% endblock js %}

@@ -1,0 +1,71 @@
+{% extends 'front/base.html' %}
+{% load static %}
+
+
+{% block content %}
+  <!-- ======= Hero Section ======= -->
+  <div class="hero route bg-image" style="background-image: url(static/front/img/cover.jpg)">
+    <div class="overlay-itro"></div>
+    <div class="hero-content display-table">
+      <div class="table-cell">
+        <div class="container">
+          <!--<p class="display-6 color-d">Hello, world!</p>-->
+          <h1 class="hero-title mb-4">Gaming News Station</h1>
+          <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
+        </div>
+      </div>
+    </div>
+  </div><!-- End Hero Section -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about-mf sect-pt4 route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="box-shadow-full">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="row">
+                    <div class="col-sm-6 col-md-5">
+                      <div class="about-img">
+                        <div class="title-box-2">
+                          <h5 class="title-left">
+                            About me
+                          </h5>
+                        </div>
+                        <img src="{% static 'front/img/rifqipratama.jpg' %}" class="img-fluid rounded b-shadow-a" alt="">
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                      <div class="about-info">
+                        <p><span class="title-s">Name          : </span> <span>Muhammad Rifqi Pratama</span></p>
+                        <p><span class="title-s">Nim           : </span> <span>2011102441224</span></p>
+                        <p><span class="title-s">Email         : </span> <span>2011102441224@umkt.ac.id</span></p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="col-md-6">
+                  <div class="about-me pt-4 pt-md-0">
+                    <div class="title-box-2">
+                      <h5 class="title-left">
+                        About Gaming News Station
+                      </h5>
+                    </div>
+                    <img src="{% static 'back/images/logo.png' %}"></img><br><br>
+                    <p class="lead">
+                      Gaming News Station adalah blog yang membagikan informasi seputar Games, kami tidak hanya menyediakan berita Games kami juga menyediakan berita
+                      seputar teknologi, gadget dan film
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End About Section -->
+    {% endblock content %}
